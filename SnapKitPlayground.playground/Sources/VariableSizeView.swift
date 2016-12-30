@@ -72,9 +72,7 @@ public class VariableSizeView : UIView {
             make.width.equalTo(0).offset(location.x)
             make.height.equalTo(0).offset(location.y)
         }
-        
-        self.setNeedsLayout()
-        
+                
         UIView.animate(withDuration: 0.2, animations: { [weak self] () -> Void in
             self?.layoutIfNeeded()
         })

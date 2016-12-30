@@ -17,23 +17,31 @@ mainView.backgroundColor = UIColor(white: 0.9, alpha: 1)
 
 // add view to mainView and set constraints here:
 
-let blueView = UIView()
-blueView.backgroundColor = .white
+let whiteView = UIView()
+whiteView.backgroundColor = .white
 
-let greenLabel = UILabel()
-greenLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-greenLabel.numberOfLines = 0
+let textLabel = UILabel()
+textLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+textLabel.numberOfLines = 0
 
-mainView.addSubview(blueView)
-blueView.addSubview(greenLabel)
+let dogView = UIImageView(image: #imageLiteral(resourceName: "good_dog.jpg"))
+dogView.contentMode = .scaleAspectFill
+dogView.clipsToBounds = true
 
-blueView.snp.makeConstraints { (make) in
+mainView.addSubview(whiteView)
+whiteView.addSubview(textLabel)
+whiteView.addSubview(dogView)
+
+whiteView.snp.makeConstraints { (make) in
     make.edges.equalTo(mainView.readableContentGuide)
 }
 
-greenLabel.snp.makeConstraints { (make) in
-    make.top.bottom.right.equalTo(blueView).inset(5)
-    make.width.equalTo(blueView).multipliedBy(0.5)
+textLabel.snp.makeConstraints { (make) in
+    make.top.bottom.right.equalTo(whiteView).inset(5)
+    make.width.equalTo(whiteView).multipliedBy(0.5)
 }
 
-
+dogView.snp.makeConstraints { (make) in
+    make.left.top.bottom.equalTo(whiteView.readableContentGuide)
+    make.right.equalTo(textLabel.snp.left).offset(-10)
+}
